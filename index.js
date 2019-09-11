@@ -44,10 +44,7 @@ var handler = function (event, context, callback) {
             // Ver envios pendientes
             let params_pendientes = {
                 TableName: 'Envios',
-                FilterExpression: 'pendiente = :pend',
-                ExpressionAttributeValues: {
-                    ':pend': 'X'
-                },
+                IndexName: 'EnviosPendientesIndex',
             };
 
             docClient.scan(params_pendientes, function(err, data) {
